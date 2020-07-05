@@ -1,0 +1,118 @@
+{
+	"info": {
+		"_postman_id": "e4ca7da1-c75c-4c9d-8e88-4a8e2dd41a03",
+		"name": "SWA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Lab03",
+			"item": [
+				{
+					"name": "http://localhost:8080/book",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"isbn\":\"126\",\"title\":\"Book 1\",\"price\":20.95,\"author\":\"James Brown\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/book/123",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/book/123",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"123"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/book/price?low=10.0&high=100.0&page=0&size=4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/book/price?low=10.0&high=100.0&page=0&size=4",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"book",
+								"price"
+							],
+							"query": [
+								{
+									"key": "low",
+									"value": "10.0"
+								},
+								{
+									"key": "high",
+									"value": "100.0"
+								},
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "size",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
