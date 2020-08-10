@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/integration"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:int-http="http://www.springframework.org/schema/integration/http"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/integration/http 
+        http://www.springframework.org/schema/integration/http/spring-integration-http.xsd
+        http://www.springframework.org/schema/integration
+        http://www.springframework.org/schema/integration/spring-integration.xsd">
+
+
+    <channel id="channelA"/>
+    <channel id="channelB"/>
+
+    <service-activator input-channel="channelA"
+                       output-channel="channelB"
+                       ref="helloService"
+                       method="sayHello"/>
+    <service-activator input-channel="channelB"
+                       ref="printService"
+                       method="print"/>
+
+    <beans:bean id="helloService" class="integration.HelloService"/>
+    <beans:bean id="printService" class="integration.PrintService"/>
+
+</beans:beans>
