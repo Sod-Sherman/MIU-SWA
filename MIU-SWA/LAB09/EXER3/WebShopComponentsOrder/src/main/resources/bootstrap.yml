@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: WebShopComponentsOrder
+  cloud:
+    config:
+      uri: http://localhost:8888
