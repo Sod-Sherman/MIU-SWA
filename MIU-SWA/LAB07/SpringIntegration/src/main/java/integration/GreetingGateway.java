@@ -9,6 +9,5 @@ import org.springframework.scheduling.annotation.Async;
 public interface GreetingGateway {
 
 	@Gateway(requestChannel = "channelA")
-	@Async
 	String handleRequest(Message<String> message);
 }

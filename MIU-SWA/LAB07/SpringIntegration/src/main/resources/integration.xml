@@ -11,16 +11,27 @@
         http://www.springframework.org/schema/integration/spring-integration.xsd">
 
 
-    <channel id="channelA"/>
-    <channel id="channelB"/>
+    <channel id="channelA">
+<!--        <queue capacity="25"/>-->
+    </channel>
+
+    <channel id="channelB">
+        <queue capacity="25"/>
+    </channel>
 
     <service-activator input-channel="channelA"
                        output-channel="channelB"
                        ref="helloService"
-                       method="sayHello"/>
+                       method="sayHello">
+    </service-activator>
+
     <service-activator input-channel="channelB"
                        ref="printService"
-                       method="print"/>
+                       method="print">
+        <poller>
+            <transactional />
+        </poller>
+    </service-activator>
 
     <beans:bean id="helloService" class="integration.HelloService"/>
     <beans:bean id="printService" class="integration.PrintService"/>
