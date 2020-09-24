@@ -1,0 +1,30 @@
+server:
+  port: 8091
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: gid
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: kafka, edu.miu.speedservice.dto.SensorRecordDto
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+app:
+  topic:
+    tofasttopic: tofasttopic
+    camera-topic1: cameratopic1
+    camera-topic2: cameratopic2
+
+logging:
+    level:
+      root: INFO
+
