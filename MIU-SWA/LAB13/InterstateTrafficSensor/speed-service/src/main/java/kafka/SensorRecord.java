@@ -11,13 +11,13 @@ public class SensorRecord {
 	public SensorRecord(String licencePlate, int minute, int second, int cameraId) {
 		super();
 		this.licencePlate = licencePlate;
+		this.cameraId = cameraId;
 		this.minute = minute;
 		this.second = second;
-		this.cameraId = cameraId;
 	}
 
 	public String toString() {
-		return licencePlate+" "+cameraId+" "+minute+" "+second;
+		return "Plate: " + licencePlate+" camId: "+cameraId+" min: "+minute+" sec: "+second;
 	}
 	public SensorRecord() {
 		super();

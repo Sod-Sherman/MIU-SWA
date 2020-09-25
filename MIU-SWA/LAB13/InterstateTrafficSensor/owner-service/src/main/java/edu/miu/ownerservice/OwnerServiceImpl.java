@@ -1,27 +1,27 @@
-package edu.miu.speedservice.service.impl;
+package edu.miu.ownerservice;
 
-import edu.miu.speedservice.service.SpeedCalculator;
-import edu.miu.speedservice.service.SpeedService;
-import kafka.SensorRecord;
+import kafka.SpeedRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.handler.annotation.Headers;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SpeedServiceImpl {
+public class OwnerServiceImpl {
 
     @Autowired
-    private SpeedCalculator speedCalculator;
+    private OwnerRepository ownerRepository;
 
-    @KafkaListener(topics = {"${app.topic.camera-topic1}", "${app.topic.camera-topic2}"})
-    public void cameraRecordReceiver(@Payload SensorRecord sensorRecord,
+    @Autowired
+    private FeeRecord feeRecord;
+
+    @KafkaListener(topics = {"${app.topic.tofasttopic}"})
+    public void cameraRecordReceiver(@Payload SpeedRecord speedRecord,
                                      @Headers MessageHeaders headers) {
-        System.out.println("************ Received message ********====> " + sensorRecord.toString());
-       speedCalculator.handleRecord(sensorRecord);
+        System.out.println("************ Received message ********====> " + speedRecord.toString());
+        feeRecord.handleFeeRecord(speedRecord);
 
         /*
             headers.keySet().forEach(key ->
